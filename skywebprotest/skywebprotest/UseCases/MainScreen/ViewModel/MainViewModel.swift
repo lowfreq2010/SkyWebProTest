@@ -55,8 +55,8 @@ class MainViewModel: MainViewModelProtocol {
     
     // MARK: Convenience methods
     
-    // fetch all currency data
-    func getData() {
+
+    func getPixabayJSONData() {
         // ask model to load data from server and prepare data for view
         self.mainModel.getData({[weak self] hits in
             print(hits)

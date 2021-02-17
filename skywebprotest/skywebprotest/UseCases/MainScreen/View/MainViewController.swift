@@ -20,11 +20,19 @@ class MainViewController: UIViewController {
         self.mainViewModel = MainViewModel()
         self.mainViewModel?.callback = { [weak self] in
             print("callback from ViewModel goes here")
+            self?.refreshView()
         }
         
-        // start asynchronous fetch
-        self.mainViewModel?.getData()
+        // start getting data
+        self.mainViewModel?.getPixabayJSONData()
         
         // Do any additional setup after loading the view.
+    }
+}
+
+extension MainViewController {
+    
+    func refreshView() -> Void {
+        print("here goes refreshing mainviecontroller")
     }
 }
