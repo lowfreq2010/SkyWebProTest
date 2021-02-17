@@ -14,8 +14,7 @@ protocol NetworkServiceDescription {
     var endpoint:String { get set}
     var baseURL:String { get}
     var serviceKey: String {get}
-    var requestParams: [String:String] {get}
-    
+    var requestParams: [String:String] {get set}
 }
 
 extension NetworkServiceDescription {
@@ -42,5 +41,9 @@ extension NetworkServiceDescription {
             count += 1
         }
         return requestedString
+    }
+    
+    mutating func updateServiceRequestParams(with value:String, for key: String) -> Void {
+        self.requestParams.updateValue(value, forKey: key)
     }
 }

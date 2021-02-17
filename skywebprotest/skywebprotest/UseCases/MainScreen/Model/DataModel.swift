@@ -1,17 +1,3 @@
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let pixabayImage = try? newJSONDecoder().decode(PixabayImage.self, from: jsonData)
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.pixabayImageTask(with: url) { pixabayImage, response, error in
-//     if let pixabayImage = pixabayImage {
-//       ...
-//     }
-//   }
-//   task.resume()
 
 import Foundation
 
@@ -20,23 +6,13 @@ struct PixabayImage: Codable {
     let total: Int
     let totalHits: Int
     let hits: [Hit]
-
+    
     enum CodingKeys: String, CodingKey {
         case total = "total"
         case totalHits = "totalHits"
         case hits = "hits"
     }
 }
-
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.hitTask(with: url) { hit, response, error in
-//     if let hit = hit {
-//       ...
-//     }
-//   }
-//   task.resume()
 
 // MARK: - Hit
 struct Hit: Codable {
@@ -62,7 +38,7 @@ struct Hit: Codable {
     let userid: Int
     let user: String
     let userImageURL: String
-
+    
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case pageURL = "pageURL"
@@ -89,38 +65,31 @@ struct Hit: Codable {
     }
 }
 
-// MARK: - Helper functions for creating encoders and decoders
-
-func newJSONDecoder() -> JSONDecoder {
-    let decoder = JSONDecoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        decoder.dateDecodingStrategy = .iso8601
+class DataModel: NSObject {
+    
+    // MARK: Private properties
+    private var receivedhits: [[Hit]]? = nil //contains array of receveid pages from Pixabay
+    private var receivedPage: [Hit]? = nil  // contains all hits from one page
+    private let jsonFetcher: Fetchable
+    
+    // MARK: Public properties
+//    var originalCurrencies: [String] { get { return self.originalList }}
+//    var originalRates: CurrencyRate { get { return self.rates }}
+    
+    // MARK: Class initializers and methods
+    init(with fetcher:Fetchable) {
+        self.jsonFetcher = fetcher
     }
-    return decoder
-}
-
-func newJSONEncoder() -> JSONEncoder {
-    let encoder = JSONEncoder()
-    if #available(iOS 10.0, OSX 10.12, tvOS 10.0, watchOS 3.0, *) {
-        encoder.dateEncodingStrategy = .iso8601
-    }
-    return encoder
-}
-
-// MARK: - URLSession response handlers
-
-extension URLSession {
-    fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.dataTask(with: url) { data, response, error in
-            guard let data = data, error == nil else {
-                completionHandler(nil, response, error)
-                return
-            }
-            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
-        }
-    }
-
-    func pixabayImageTask(with url: URL, completionHandler: @escaping (PixabayImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.codableTask(with: url, completionHandler: completionHandler)
+    
+    // fetch all image json
+    func getData(_ completion: @escaping ([[Hit]]) -> ()) {
+        
+        let _ = self.jsonFetcher.fetch({[weak self] jsonHits in
+            guard let receivedHitPage: [Hit] = jsonHits else {return}
+            self?.receivedPage = receivedHitPage
+            self?.receivedhits?.append(receivedHitPage)
+            guard let returnedHits = self?.receivedhits else {return}
+            completion(returnedHits)
+        })
     }
 }

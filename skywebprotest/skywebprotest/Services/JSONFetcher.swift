@@ -3,14 +3,14 @@ import UIKit
 
 protocol Fetchable: class {
     var sourceURL: String { get set }
-    func fetch(_ completion: @escaping (Data) -> ()) -> Void
+    func fetch(_ completion: @escaping ([Hit]?) -> ()) -> Void
 }
 
 class Fetcher: Fetchable {
     var sourceURL:String = ""
-    let service: NetworkServiceDescription
+    var service: NetworkServiceDescription
     
-    func fetch(_ completion: @escaping (Data) -> ()) -> Void {
+    func fetch(_ completion: @escaping ([Hit]?) -> ()) -> Void {
     }
     
     init(with service:NetworkServiceDescription) {
@@ -20,50 +20,45 @@ class Fetcher: Fetchable {
 }
 
 // Fetch via URLSession class
-class JSONOnlineFetcher: Fetcher {
+class PixabayJSONFetcher: Fetcher {
+    var page: Int = 1
     
     init() {
-        let params = ["app_id" : "3e58b5f8575742b7817e51d5e1196c0b"]
+        let params = ["key" : "20294730-c05284c1853e0f56dff069a0",
+                      "q":"yellow+cat","image_type":"photo","page":"1","lang":"en"]
         super.init(with: PixabayImageService(with: params))
     }
     
-    override func fetch(_ completion: @escaping (Data) -> ()) -> Void  {
+    override func fetch(_ completion: @escaping ([Hit]?) -> ()) -> Void  {
+        
         guard let url = URL(string: self.sourceURL) else {return}
-        // let use URLSession for async JSON request
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let data = data {
-                // pass the data to completion block
-                completion(data)
-            }
-        }.resume()
+        let task = URLSession.shared.pixabayImageTask(with: url) { pixabayImage, response, error in
+            guard let pixabayImage = pixabayImage else {return}
+            self.page += 1
+            self.service.updateServiceRequestParams(with: String(self.page), for: "page")
+            let receivedHits: [Hit] = pixabayImage.hits
+            completion(receivedHits)
+           }
+           task.resume()
     }
 }
 
-// offline mock for developemnt/testing purpose
-// just inject it into jsonFetcher property of CurrencyModel
-class JSONOfflineFetcher: Fetchable {
-    
-    var sourceURL: String = """
-        {
-           "disclaimer":"https://openexchangerates.org/terms/",
-           "license":"https://openexchangerates.org/license/",
-           "timestamp":1449877801,
-           "base":"USD",
-           "rates":{
-              "AED":3.672538,
-              "AFN":66.809999,
-              "ALL":125.716501,
-              "AMD":484.902502,
-              "ANG":1.788575,
-              "AOA":135.295998,
-              "ARS":9.750101,
-              "AUD":1.390866
-           }
+// MARK: - URLSession response handlers
+
+extension URLSession {
+    fileprivate func codableTask<T: Codable>(with url: URL, completionHandler: @escaping (T?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return self.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                completionHandler(nil, response, error)
+                return
+            }
+            completionHandler(try? newJSONDecoder().decode(T.self, from: data), response, nil)
         }
-        """
-    
-    func fetch(_ completion: @escaping (Data)->()) -> () {
-        completion(self.sourceURL.data(using: .utf8)!)
+    }
+
+    func pixabayImageTask(with url: URL, completionHandler: @escaping (PixabayImage?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+        return self.codableTask(with: url, completionHandler: completionHandler)
     }
 }
+
 
