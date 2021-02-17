@@ -21,6 +21,8 @@
 		B7A8E5D925DBEF6700D45943 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8E5CC25DBEF6600D45943 /* DataModel.swift */; };
 		FC25802E25DCFBD800ACABFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25802D25DCFBD800ACABFF /* MainViewController.swift */; };
 		FC25803625DCFC7C00ACABFF /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25803525DCFC7C00ACABFF /* MainViewModel.swift */; };
+		FC25803F25DD8A2200ACABFF /* ImageFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25803E25DD8A2200ACABFF /* ImageFetcher.swift */; };
+		FC25804225DDA3BB00ACABFF /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC25804125DDA3BB00ACABFF /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		B7A8E5CC25DBEF6600D45943 /* DataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		FC25802D25DCFBD800ACABFF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FC25803525DCFC7C00ACABFF /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FC25803E25DD8A2200ACABFF /* ImageFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFetcher.swift; sourceTree = "<group>"; };
+		FC25804125DDA3BB00ACABFF /* ImageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				B7A8E5B625DBEF1A00D45943 /* JSONFetcher.swift */,
+				FC25804125DDA3BB00ACABFF /* ImageService.swift */,
+				FC25803E25DD8A2200ACABFF /* ImageFetcher.swift */,
 				B7A8E5B725DBEF1A00D45943 /* NetworkServiceProtocols */,
 				B7A8E5BA25DBEF1A00D45943 /* PersistentStorage.swift */,
 				B7A8E5BB25DBEF1A00D45943 /* JSONProcessor.swift */,
@@ -225,7 +231,9 @@
 				B7A8E5A125DBEE5200D45943 /* AppDelegate.swift in Sources */,
 				B7A8E5A325DBEE5200D45943 /* SceneDelegate.swift in Sources */,
 				B7A8E5BC25DBEF1A00D45943 /* JSONFetcher.swift in Sources */,
+				FC25804225DDA3BB00ACABFF /* ImageService.swift in Sources */,
 				B7A8E5BF25DBEF1A00D45943 /* PersistentStorage.swift in Sources */,
+				FC25803F25DD8A2200ACABFF /* ImageFetcher.swift in Sources */,
 				FC25802E25DCFBD800ACABFF /* MainViewController.swift in Sources */,
 				FC25803625DCFC7C00ACABFF /* MainViewModel.swift in Sources */,
 			);

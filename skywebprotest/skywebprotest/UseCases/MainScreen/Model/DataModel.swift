@@ -68,9 +68,10 @@ struct Hit: Codable {
 class DataModel: NSObject {
     
     // MARK: Private properties
-    private var receivedhits: [[Hit]]? = nil //contains array of receveid pages from Pixabay
-    private var receivedPage: [Hit]? = nil  // contains all hits from one page
+    private var receivedhits: [Hit] = [] //contains array of images from Pixabay
+//    private var receivedPage: [Hit]? = nil  // contains all hits from one page fetch
     private let jsonFetcher: Fetchable
+    private let imageFetcher: ImageFetcher = ImageFetcher()
     
     // MARK: Class initializers and methods
     init(with fetcher: Fetchable) {
@@ -78,14 +79,22 @@ class DataModel: NSObject {
     }
     
     // fetch all image json
-    func getData(_ completion: @escaping ([[Hit]]) -> ()) {
+    func getData(_ completion: @escaping ([Hit]) -> ()) {
         
         let _ = self.jsonFetcher.fetch({[weak self] jsonHits in
-            guard let receivedHitPage: [Hit] = jsonHits else {return}
-            self?.receivedPage = receivedHitPage
-            self?.receivedhits?.append(receivedHitPage)
-            guard let returnedHits = self?.receivedhits else {return}
-            completion(returnedHits)
+        
+            guard let receivedHitPage = jsonHits else {return}
+            self?.receivedhits.append(contentsOf: receivedHitPage)
+            guard let rec = self?.receivedhits else {return}
+            completion(rec)
+            
+        })
+    }
+    
+    func downloadImages(with urlList: [Int:String], completion: @escaping () -> Void) {
+        
+        self.imageFetcher.fetch(with: urlList, completion: {
+            completion()
         })
     }
 }

@@ -32,6 +32,6 @@ class MainViewController: UIViewController {
 extension MainViewController {
     
     func refreshView() -> Void {
-        print("here goes refreshing mainviecontroller")
+        
     }
 }
