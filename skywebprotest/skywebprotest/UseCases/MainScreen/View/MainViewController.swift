@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
         //set viewModel
         self.mainViewModel = MainViewModel()
         self.mainViewModel?.callback = { [weak self] in
-            print("callback from ViewModel goes here")
             self?.refreshView()
         }
         

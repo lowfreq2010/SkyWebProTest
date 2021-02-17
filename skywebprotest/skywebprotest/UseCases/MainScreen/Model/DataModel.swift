@@ -72,12 +72,8 @@ class DataModel: NSObject {
     private var receivedPage: [Hit]? = nil  // contains all hits from one page
     private let jsonFetcher: Fetchable
     
-    // MARK: Public properties
-//    var originalCurrencies: [String] { get { return self.originalList }}
-//    var originalRates: CurrencyRate { get { return self.rates }}
-    
     // MARK: Class initializers and methods
-    init(with fetcher:Fetchable) {
+    init(with fetcher: Fetchable) {
         self.jsonFetcher = fetcher
     }
     
