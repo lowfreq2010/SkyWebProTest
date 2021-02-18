@@ -43,6 +43,7 @@ final class ImageService: NSObject {
         guard let image = image else {return}
         let imageData = image.pngData()
         let filename = getDocumentsDirectory().appendingPathComponent("\(filename).png")
+        print(filename)
         try? imageData?.write(to: filename)
     }
     

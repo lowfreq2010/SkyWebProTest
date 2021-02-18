@@ -93,8 +93,6 @@ class DataModel: NSObject {
     
     func downloadImages(with urlList: [Int:String], completion: @escaping () -> Void) {
         
-        self.imageFetcher.fetch(with: urlList, completion: {
-            completion()
-        })
+        self.imageFetcher.fetch(with: urlList, completion: completion)
     }
 }
