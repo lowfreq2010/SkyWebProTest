@@ -17,24 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L5N-u3-ui7">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c0x-RG-3nv">
                                 <rect key="frame" x="20" y="88" width="374" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="R7R-RQ-O92">
-                                    <size key="itemSize" width="374" height="768"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="PSA-2F-Fff">
+                                    <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="enR-NM-WbV" customClass="MainCVCell" customModule="skywebprotest" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="768"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ksr-XC-e2x" customClass="MainCVCell" customModule="skywebprotest" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="SPg-uc-sYl">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="768"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xdl-dK-L7u">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="374" height="768"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -42,17 +41,17 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="L5N-u3-ui7" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" id="Bgd-LB-8PO"/>
-                            <constraint firstItem="L5N-u3-ui7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GLF-GL-Wrc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="L5N-u3-ui7" secondAttribute="bottom" id="PuL-3w-l1E"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="L5N-u3-ui7" secondAttribute="trailing" constant="20" id="Sbb-ve-tYd"/>
-                            <constraint firstItem="L5N-u3-ui7" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.903382" id="TEb-kC-KUK"/>
-                            <constraint firstItem="L5N-u3-ui7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="wjc-Lp-H37"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="APF-iu-PoE"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.863839" id="Q0L-qj-4lg"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.903382" id="Q6Q-P6-LR3"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SCN-bD-xMe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c0x-RG-3nv" secondAttribute="bottom" id="UNP-1r-FPd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0x-RG-3nv" secondAttribute="trailing" constant="20" id="dKb-8m-evj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MCK-xL-GEg"/>
                     <connections>
-                        <outlet property="imagesCV" destination="L5N-u3-ui7" id="jGl-wo-cPS"/>
+                        <outlet property="collectionView" destination="c0x-RG-3nv" id="R84-dz-W8c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
