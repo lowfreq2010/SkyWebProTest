@@ -47,7 +47,7 @@
             <size key="customSize" width="315" height="511"/>
             <connections>
                 <outlet property="imageView" destination="VTq-Vd-m9g" id="lBj-6J-1b3"/>
-                <outlet property="scrollerView" destination="iVq-b9-5bI" id="Aqi-B8-UkO"/>
+                <outlet property="scrollerView" destination="iVq-b9-5bI" id="VA2-te-vrl"/>
             </connections>
             <point key="canvasLocation" x="327.1875" y="115.66901408450704"/>
         </collectionViewCell>

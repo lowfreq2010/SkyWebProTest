@@ -14,9 +14,7 @@ class MainCVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         contentView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             contentView.leftAnchor.constraint(equalTo: leftAnchor),
             contentView.rightAnchor.constraint(equalTo: rightAnchor),
@@ -25,7 +23,7 @@ class MainCVCell: UICollectionViewCell {
         ])
     }
     
-    func congigure(with viewModel: ImageCellViewModel) {
+    func configure(with viewModel: ImageCellViewModel) {
         guard let img = viewModel.image else {return}
         self.imageView.image = img
     }

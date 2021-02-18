@@ -43,6 +43,7 @@ class MainViewModel: MainViewModelProtocol {
             let tupleArray: [(Int, String)] = urlDictArray.flatMap { $0 }
             let urlDictionary = Dictionary(tupleArray, uniquingKeysWith: { (first, last) in last })
             self?.mainModel.downloadImages(with: urlDictionary, completion: {
+                
                 self?.callback()
             })
         })

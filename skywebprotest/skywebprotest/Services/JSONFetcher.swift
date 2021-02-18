@@ -23,7 +23,8 @@ class Fetcher: Fetchable {
 class PixabayJSONFetcher: Fetcher {
     var page: Int = 1 {
         didSet {
-            self.service.updateServiceRequestParams(with: String(self.page), for: "page")
+            self.service.updateServiceRequestParams(with: String(describing: self.page), for: "page")
+            self.sourceURL = self.service.requestURL
         }
     }
     
