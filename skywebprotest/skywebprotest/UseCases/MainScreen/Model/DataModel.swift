@@ -95,4 +95,9 @@ class DataModel: NSObject {
         
         self.imageFetcher.fetch(with: urlList, completion: completion)
     }
+    
+    func getImage(with imageID: Int) -> String {
+        let fileName = String(describing: imageID)
+        return ImageService.getImageNameFromDocuments(by: fileName)
+    }
 }

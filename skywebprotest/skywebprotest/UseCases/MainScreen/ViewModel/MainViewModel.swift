@@ -71,4 +71,12 @@ class MainViewModel: MainViewModelProtocol {
             })
         })
     }
+    
+    func cellViewModel(for row:Int) -> ImageCellViewModel? {
+        
+        let imageID = self.imageID[row]
+        let imagePath = self.mainModel.getImage(with: imageID)
+        return ImageCellViewModel(with: imagePath)
+        
+    }
 }

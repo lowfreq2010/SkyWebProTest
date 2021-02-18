@@ -65,11 +65,17 @@ final class ImageService: NSObject {
     
     public static func getImageFromDocuments(by name: String) ->UIImage? {
         
-        let documentPath = getDocumentsDirectory()
-        let imageURL = URL(fileURLWithPath: documentPath.path).appendingPathComponent("\(name).png")
-        let image    = UIImage(contentsOfFile: imageURL.path)
+        let imagePath = getImageNameFromDocuments(by: name)
+        let image    = UIImage(contentsOfFile: imagePath)
         
         return image
+    }
+    
+    public static func getImageNameFromDocuments(by name: String) -> String {
+        
+        let documentPath = getDocumentsDirectory()
+        let imageURL = URL(fileURLWithPath: documentPath.path).appendingPathComponent("\(name).png")
+        return imageURL.path
     }
     
     public static func copyImageFromTemp(by name: String) -> Void {
