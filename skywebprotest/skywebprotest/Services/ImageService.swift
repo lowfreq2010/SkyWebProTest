@@ -14,19 +14,24 @@ final class ImageService: NSObject {
     
     private static func drawRectangle(with width:Int, height: Int) -> UIImage? {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: width, height: height))
-
+        
         let img =  renderer.image { ctx in
             let rectangle = CGRect(x: 0, y: 0, width: width, height: height)
-
+            
             ctx.cgContext.setFillColor(UIColor.random.cgColor)
             ctx.cgContext.setStrokeColor(UIColor.random.cgColor)
             ctx.cgContext.setLineWidth(10)
-
+            
             ctx.cgContext.addRect(rectangle)
             ctx.cgContext.drawPath(using: .fillStroke)
         }
         
         return img
+    }
+    
+    private static func getImageURL(with name: String) -> URL? {
+        let documentPath = FileManager.getDocumentsDirectory()
+        return URL(fileURLWithPath: documentPath.path).appendingPathComponent("\(name).png")
     }
     
     //MARK: Public API methods
@@ -35,14 +40,14 @@ final class ImageService: NSObject {
         
         let image: UIImage? = self.drawRectangle(with: width, height: height)
         saveImage(from: image, to: name)
-
+        
     }
     
     static public func saveImage(from image: UIImage?, to filename: String) -> Void {
         
         guard let image = image else {return}
         let imageData = image.pngData()
-        let filename = getDocumentsDirectory().appendingPathComponent("\(filename).png")
+        let filename = FileManager.getDocumentsDirectory().appendingPathComponent("\(filename).png")
         try? imageData?.write(to: filename)
     }
     
@@ -50,7 +55,7 @@ final class ImageService: NSObject {
         
         guard let image = image else {return}
         let imageData = image.pngData()
-        let filename = getTempDirectory().appendingPathComponent("\(filename).png")
+        let filename = FileManager.getTempDirectory().appendingPathComponent("\(filename).png")
         try? imageData?.write(to: filename)
     }
     
@@ -66,22 +71,25 @@ final class ImageService: NSObject {
         
         let imagePath = getImageNameFromDocuments(by: name)
         let image    = UIImage(contentsOfFile: imagePath)
-        
         return image
     }
     
     public static func getImageNameFromDocuments(by name: String) -> String {
         
-        let documentPath = getDocumentsDirectory()
-        let imageURL = URL(fileURLWithPath: documentPath.path).appendingPathComponent("\(name).png")
+        guard let imageURL = getImageURL(with: name) else {return ""}
         return imageURL.path
+    }
+    
+    public static func isImageExist(with name: String) -> Bool {
+        let imagePath = self.getImageNameFromDocuments(by: name)
+        let isExist =  FileManager.default.fileExists(atPath: imagePath)
+        return isExist
     }
     
     public static func copyImageFromTemp(by name: String) -> Void {
         
-        let documentPath = getDocumentsDirectory()
-        let tempPath = getTempDirectory()
-        let imageDestinationURL = URL(fileURLWithPath: documentPath.path).appendingPathComponent("\(name).png")
+        let tempPath = FileManager.getTempDirectory()
+        guard let imageDestinationURL = getImageURL(with: name) else { return }
         let imageOriginURL = URL(fileURLWithPath: tempPath.path).appendingPathComponent("\(name).png")
         let fileExist = FileManager.default.fileExists(atPath: imageOriginURL.path)
         if fileExist {
@@ -89,21 +97,7 @@ final class ImageService: NSObject {
                 try? FileManager.default.copyItem(at: imageOriginURL, to: imageDestinationURL)
                 try? FileManager.default.removeItem(atPath: imageOriginURL.path)
             }
-
         }
-
-    }
-}
-
-extension ImageService {
-    private static func getDocumentsDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0]
-    }
-    
-    private static func getTempDirectory() -> URL {
-        let paths = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)
-        return paths[0]
     }
 }
 

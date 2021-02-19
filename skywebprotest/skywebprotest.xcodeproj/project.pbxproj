@@ -26,6 +26,7 @@
 		FCC276B725DE683500114FD7 /* MainCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCC276B525DE683500114FD7 /* MainCVCell.xib */; };
 		FCC276BB25DE6B8700114FD7 /* MainCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC276BA25DE6B8700114FD7 /* MainCollectionViewController.swift */; };
 		FCC276BE25DE7CF900114FD7 /* ImageCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC276BD25DE7CF900114FD7 /* ImageCellViewModel.swift */; };
+		FCC276C925DF6C4B00114FD7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC276C825DF6C4B00114FD7 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		FCC276B525DE683500114FD7 /* MainCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCVCell.xib; sourceTree = "<group>"; };
 		FCC276BA25DE6B8700114FD7 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
 		FCC276BD25DE7CF900114FD7 /* ImageCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellViewModel.swift; sourceTree = "<group>"; };
+		FCC276C825DF6C4B00114FD7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 			children = (
 				B7A8E5C225DBEF6600D45943 /* UseCases */,
 				B7A8E5B525DBEF1A00D45943 /* Services */,
+				FCC276C725DF6C0C00114FD7 /* Extensions */,
 				B7A8E5A025DBEE5200D45943 /* AppDelegate.swift */,
 				B7A8E5A225DBEE5200D45943 /* SceneDelegate.swift */,
 				B7A8E5A425DBEE5200D45943 /* ViewController.swift */,
@@ -170,6 +173,14 @@
 			name = MainCVCell;
 			sourceTree = "<group>";
 		};
+		FCC276C725DF6C0C00114FD7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FCC276C825DF6C4B00114FD7 /* Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,6 +263,7 @@
 				B7A8E5BC25DBEF1A00D45943 /* JSONFetcher.swift in Sources */,
 				FC25804225DDA3BB00ACABFF /* ImageService.swift in Sources */,
 				FCC276B625DE683500114FD7 /* MainCVCell.swift in Sources */,
+				FCC276C925DF6C4B00114FD7 /* Extensions.swift in Sources */,
 				B7A8E5BF25DBEF1A00D45943 /* PersistentStorage.swift in Sources */,
 				FC25803F25DD8A2200ACABFF /* ImageFetcher.swift in Sources */,
 				FCC276BE25DE7CF900114FD7 /* ImageCellViewModel.swift in Sources */,

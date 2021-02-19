@@ -16,15 +16,16 @@ class ImageFetcher: NSObject {
         for item in imagesDict {
             guard let url = URL(string: item.value) else {return}
             let imageID: String = String(describing: item.key)
-            downloadGroup.enter()
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                // save received data as image
-                guard let data = data else {return}
-                let _ = ImageService.saveImage(from: UIImage(data: data), to: imageID)
-                downloadGroup.leave()
-            }.resume()
+            if !ImageService.isImageExist(with: imageID) {
+                downloadGroup.enter()
+                URLSession.shared.dataTask(with: url) { data, response, error in
+                    // save received data as image
+                    guard let data = data else {return}
+                    let _ = ImageService.saveImage(from: UIImage(data: data), to: imageID)
+                    downloadGroup.leave()
+                }.resume()
+            }
         }
-        
         downloadGroup.notify(queue: DispatchQueue.main) {
           completion()
         }
