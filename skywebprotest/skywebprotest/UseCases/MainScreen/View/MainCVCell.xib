@@ -16,34 +16,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="315" height="511"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iVq-b9-5bI">
-                        <rect key="frame" x="0.0" y="-24" width="315" height="535"/>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iVq-b9-5bI">
+                        <rect key="frame" x="0.0" y="-24" width="20.5" height="20"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VTq-Vd-m9g">
-                                <rect key="frame" x="0.0" y="0.0" width="315" height="533.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VTq-Vd-m9g">
+                                <rect key="frame" x="0.0" y="28" width="309" height="505"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="VTq-Vd-m9g" firstAttribute="centerY" secondItem="iVq-b9-5bI" secondAttribute="centerY" id="ceo-EU-2cH"/>
-                            <constraint firstAttribute="trailing" secondItem="VTq-Vd-m9g" secondAttribute="trailing" id="glV-t6-IPs"/>
-                            <constraint firstItem="VTq-Vd-m9g" firstAttribute="width" secondItem="iVq-b9-5bI" secondAttribute="width" id="hfs-rW-0L3"/>
-                            <constraint firstAttribute="bottom" secondItem="VTq-Vd-m9g" secondAttribute="bottom" id="np0-lt-sNw"/>
-                            <constraint firstItem="VTq-Vd-m9g" firstAttribute="height" secondItem="iVq-b9-5bI" secondAttribute="height" id="uey-MQ-aj3"/>
-                            <constraint firstItem="VTq-Vd-m9g" firstAttribute="leading" secondItem="xgd-gl-63v" secondAttribute="leading" id="wsY-iI-ovi"/>
-                            <constraint firstItem="VTq-Vd-m9g" firstAttribute="centerX" secondItem="iVq-b9-5bI" secondAttribute="centerX" id="x6u-bG-oGA"/>
-                        </constraints>
                         <viewLayoutGuide key="contentLayoutGuide" id="I4y-JS-KKv"/>
                         <viewLayoutGuide key="frameLayoutGuide" id="xgd-gl-63v"/>
                     </scrollView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <constraints>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="iVq-b9-5bI" secondAttribute="trailing" id="14Q-vz-wS1"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="bottom" secondItem="iVq-b9-5bI" secondAttribute="bottom" id="S3l-u4-Lke"/>
-                <constraint firstItem="iVq-b9-5bI" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="f2P-im-Dnd"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="top" secondItem="iVq-b9-5bI" secondAttribute="top" constant="24" id="wbn-dm-xop"/>
-            </constraints>
             <size key="customSize" width="315" height="511"/>
             <connections>
                 <outlet property="imageView" destination="VTq-Vd-m9g" id="lBj-6J-1b3"/>
