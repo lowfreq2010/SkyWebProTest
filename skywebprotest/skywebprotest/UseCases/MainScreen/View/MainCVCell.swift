@@ -14,14 +14,17 @@ class MainCVCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            contentView.leftAnchor.constraint(equalTo: leftAnchor),
-            contentView.rightAnchor.constraint(equalTo: rightAnchor),
-            contentView.topAnchor.constraint(equalTo: topAnchor),
-            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+        setupConstraints()
         
+    }
+    
+    func configure(with viewModel: ImageCellViewModel) {
+        guard let img = viewModel.image else {return}
+        self.imageView.image = img
+        self.scrollerView.contentSize = img.size
+    }
+    
+    func setupConstraints() -> Void {
         scrollerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             scrollerView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -39,11 +42,6 @@ class MainCVCell: UICollectionViewCell {
                 imageView.bottomAnchor.constraint(equalTo: scrollerView.bottomAnchor) // attaching to the bottom
             ]
         )
-    }
-    
-    func configure(with viewModel: ImageCellViewModel) {
-        guard let img = viewModel.image else {return}
-        self.imageView.image = img
-        self.scrollerView.contentSize = img.size
+        
     }
 }

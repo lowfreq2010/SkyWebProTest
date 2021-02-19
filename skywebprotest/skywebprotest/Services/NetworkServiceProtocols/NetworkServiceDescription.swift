@@ -1,6 +1,5 @@
 //
 //  NetworkServiceDescription.swift
-//  CurrencyListFetcher
 //
 //  Created by VNS Work on 09.02.2021.
 //

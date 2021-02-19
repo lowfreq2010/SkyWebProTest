@@ -69,7 +69,6 @@ class DataModel: NSObject {
     
     // MARK: Private properties
     private var receivedhits: [Hit] = [] //contains array of images from Pixabay
-//    private var receivedPage: [Hit]? = nil  // contains all hits from one page fetch
     private let jsonFetcher: Fetchable
     private let imageFetcher: ImageFetcher = ImageFetcher()
     
