@@ -27,7 +27,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Ksr-XC-e2x" customClass="MainCVCell" customModule="skywebprotest" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="Ksr-XC-e2x" customClass="MainCVCell" customModule="skywebprotest" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Xdl-dK-L7u">
@@ -41,12 +41,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="c0x-RG-3nv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="APF-iu-PoE"/>
-                            <constraint firstItem="c0x-RG-3nv" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.863839" id="Q0L-qj-4lg"/>
-                            <constraint firstItem="c0x-RG-3nv" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.903382" id="Q6Q-P6-LR3"/>
-                            <constraint firstItem="c0x-RG-3nv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="SCN-bD-xMe"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c0x-RG-3nv" secondAttribute="bottom" id="UNP-1r-FPd"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0x-RG-3nv" secondAttribute="trailing" constant="20" id="dKb-8m-evj"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KOH-po-4Uc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="c0x-RG-3nv" secondAttribute="bottom" id="Uzi-OS-1wv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="c0x-RG-3nv" secondAttribute="trailing" constant="20" id="YWq-Pa-I4c"/>
+                            <constraint firstItem="c0x-RG-3nv" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ipu-mv-dQZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MCK-xL-GEg"/>

@@ -34,7 +34,7 @@ class MainViewModel: MainViewModelProtocol {
         self.mainModel.getData({[weak self] hits in
             let hitsID = hits.map({$0.id})
             self?.imageID.append(contentsOf: hitsID)
-            let urlDictArray: [[Int:String]] = hits.map({[$0.id:$0.largeImageURL]})
+            let urlDictArray: [[Int:String]] = hits.map({[$0.id:$0.webformatURL]})
             let tupleArray: [(Int, String)] = urlDictArray.flatMap { $0 }
             let urlDictionary = Dictionary(tupleArray, uniquingKeysWith: { (first, last) in last })
             self?.mainModel.downloadImages(with: urlDictionary, completion: {
