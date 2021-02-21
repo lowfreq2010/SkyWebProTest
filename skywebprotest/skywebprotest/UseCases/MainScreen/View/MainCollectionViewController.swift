@@ -27,7 +27,10 @@ class MainCollectionViewController: UIViewController {
         }
         
         // start getting data
-        self.mainViewModel?.getPixabayJSONData()
+        DispatchQueue.global().async {[weak self] in
+            self?.mainViewModel?.getPixabayJSONData()
+        }
+        self.collectionView.reloadData()
     }
 }
 
@@ -56,8 +59,8 @@ extension MainCollectionViewController {
     func loadMoreData() {
         if !self.isLoading {
             self.isLoading = true
-            DispatchQueue.global().async {
-                self.mainViewModel?.getPixabayJSONData()
+            DispatchQueue.global().async {[weak self] in
+                self?.mainViewModel?.getPixabayJSONData()
             }
         }
     }
@@ -69,7 +72,6 @@ extension MainCollectionViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let section = indexPath.section
         let numberRows = self.mainViewModel?.numberOfRows(for: section) ?? 1
-        print("current \(indexPath.row) of rows\(numberRows)")
         if (indexPath.row == numberRows - 10 && !self.isLoading) {
             loadMoreData()
         }
