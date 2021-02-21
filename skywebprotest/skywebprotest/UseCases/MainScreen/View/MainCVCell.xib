@@ -17,21 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="315" height="511"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VTq-Vd-m9g">
-                        <rect key="frame" x="0.0" y="0.0" width="315" height="510"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="VTq-Vd-m9g">
+                        <rect key="frame" x="294.5" y="491.5" width="20.5" height="18.5"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="linkColor"/>
                     </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <constraints>
-                <constraint firstItem="VTq-Vd-m9g" firstAttribute="leading" secondItem="ZTg-uK-7eu" secondAttribute="leading" id="6UO-mr-Xgi"/>
-                <constraint firstItem="VTq-Vd-m9g" firstAttribute="width" secondItem="ZTg-uK-7eu" secondAttribute="width" id="Eg4-22-7Kv"/>
-                <constraint firstItem="VTq-Vd-m9g" firstAttribute="height" secondItem="ZTg-uK-7eu" secondAttribute="height" multiplier="1.00098" id="U8n-GT-gMf"/>
-                <constraint firstItem="ZTg-uK-7eu" firstAttribute="trailing" secondItem="VTq-Vd-m9g" secondAttribute="trailing" id="aX1-rq-HYE"/>
-                <constraint firstItem="VTq-Vd-m9g" firstAttribute="top" secondItem="ZTg-uK-7eu" secondAttribute="top" id="aY2-bm-M6b"/>
-                <constraint firstItem="VTq-Vd-m9g" firstAttribute="bottom" secondItem="ZTg-uK-7eu" secondAttribute="bottom" constant="0.5" id="lKE-x1-pOC"/>
-            </constraints>
             <size key="customSize" width="315" height="511"/>
             <connections>
                 <outlet property="imageView" destination="VTq-Vd-m9g" id="lBj-6J-1b3"/>
